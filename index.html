@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师节快乐</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            background: linear-gradient(to bottom, #e6f7ff, #ffffff);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+        .message {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: slideIn 1.5s;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #ff6b6b;
+            padding-left: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .interactive {
+            margin: 30px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            border: 1px dashed #4CAF50;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b6b;
+            animation: confetti-fall 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ 老师，教师节快乐！ ❤️</h1>
+        
+        <div class="message">
+            <p>亲爱的老师，感谢您用知识浇灌我们的心田，用智慧点亮我们前进的道路。</p >
+            <p>在这个特别的日子里，祝您节日快乐，身体健康，桃李满天下！</p >
+        </div>
+        
+        <div class="quote">
+            “教育的本质是一棵树摇动另一棵树，一朵云推动另一朵云，一个灵魂唤醒另一个灵魂。”
+        </div>
+        
+        <div class="interactive">
+            <button onclick="showSpecialMessage()">点击收获特别祝福</button>
+            <div id="specialMessage" class="hidden-message">
+                <p>✨ 感谢您不仅仅是传授知识，更是教会我们如何思考、如何做人。您的教诲将伴随我们一生！ ✨</p >
+            </div>
+        </div>
+        
+        <div class="message">
+            <p>— 来自您永远的学生</p >
+        </div>
+    </div>
+
+    <script>
+        function showSpecialMessage() {
+            const message = document.getElementById('specialMessage');
+            message.style.display = 'block';
+            
+            // 创建彩色纸屑效果
+            for (let i = 0; i < 50; i++) {
+                createConfetti();
+            }
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = getRandomColor();
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            // 清除创建的confetti元素
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        function getRandomColor() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9c74f', '#f94144', '#f8961e', '#90be6d', '#577590'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // 页面加载时显示渐入动画
+        window.onload = function() {
+            document.body.style.opacity = 1;
+        };
+    </script>
+</body>
+</html>
